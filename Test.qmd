@@ -1,0 +1,146 @@
+---
+title: "Claire_Test"
+format: html
+editor: visual
+---
+
+### Some notes for branching
+
+### **1. Clone Your New GitHub Repository into RStudio**
+
+1.  **Copy the Repository URL**:
+    -   Go to your GitHub repository.
+    -   Click the green **Code** button.
+    -   Copy the HTTPS URL (e.g., [`https://github.com/your-username/your-repo.git`](https://github.com/your-username/your-repo.git)).
+2.  **Open RStudio and Clone**:
+    -   In RStudio, go to **File \> New Project \> Version Control \> Git**.
+    -   Paste the copied URL into the **Repository URL** field.
+    -   Choose a **local directory** for your project.
+    -   Click **Create Project**. This clones the repository into your local machine and sets it up as an RStudio project.
+
+------------------------------------------------------------------------
+
+### **2. Practice Creating Branches Locally**
+
+1.  **View the Current Branch**:
+    -   In the Git tab in RStudio, you'll see the current branch listed (usually `main`).
+2.  **Create a New Branch**:
+    -   Click the **New Branch** button in RStudio's Git tab.
+    -   Name your new branch (e.g., `feature/test-branch`) and click **OK**.
+3.  **Switch to the New Branch**:
+    -   RStudio will automatically switch to the new branch after you create it.
+
+    -   Confirm by checking the branch name in the Git tab or running:
+
+        ``` bash
+        git branch
+        ```
+4.  **Make Changes on the New Branch**:
+    -   Edit or create a file, then save it.
+    -   Stage and commit the changes in the Git tab:
+        -   Check the box next to the file in the **Staged** column.
+        -   Click **Commit**, add a commit message, and click **Commit**.
+5.  **Push the Branch to GitHub**:
+    -   Click **Push** in the Git tab.
+    -   Since this is a new branch, RStudio may ask if you want to set the branch to track the remote. Confirm by clicking **Yes**.
+
+------------------------------------------------------------------------
+
+### **3. Create a Pull Request on GitHub**
+
+1.  **Go to Your Repository**:
+    -   Open your GitHub repository in your browser.
+    -   You’ll see a notification about the new branch you just pushed. Click **Compare & pull request**.
+2.  **Open the Pull Request**:
+    -   Add a title and description for your pull request (PR).
+    -   Click **Create pull request**.
+
+------------------------------------------------------------------------
+
+### **4. Merge the Pull Request (By the Second Team Member)**
+
+1.  **Switch to Your Partner's GitHub Account**:
+    -   The second team member logs in to their GitHub account.
+2.  **Review the Pull Request**:
+    -   Go to the repository's **Pull Requests** tab.
+    -   Click the pull request, review the changes, and leave comments if necessary.
+3.  **Merge the Pull Request**:
+    -   Once satisfied, click **Merge pull request**, then confirm by clicking **Confirm merge**.
+4.  **Delete the Branch (Optional)**:
+    -   After merging, GitHub will prompt you to delete the branch. Click **Delete branch** to keep the repository clean.
+
+------------------------------------------------------------------------
+
+### **5. Sync Changes Locally**
+
+After the PR is merged:
+
+1.  **Switch Back to the Main Branch Locally**:
+
+    ``` bash
+    git checkout main
+    ```
+
+2.  **Pull the Latest Changes**:
+
+    ``` bash
+    git pull origin main
+    ```
+
+Now, your local main branch will be up to date with the remote repository.
+
+------------------------------------------------------------------------
+
+### **6. Practice Resolving Merge Conflicts**
+
+You can simulate a conflict by: - Both team members editing the same file on different branches. - Attempting to merge those branches into `main`.
+
+If a conflict arises, Git will notify you during the merge process. You’ll need to: 1. Open the conflicting file(s) and resolve conflicts manually. 2. Mark the conflicts as resolved: `bash    git add <file-name>`
+
+3.  Commit the merge:
+
+    ``` bash
+    git commit -m "Resolved merge conflicts"
+    ```
+
+4.  Push the changes to the remote repository:
+
+    ``` bash
+    git push origin main
+    ```
+
+------------------------------------------------------------------------
+
+### **Key Git Commands Summary**
+
+Here’s a quick reference for commonly used commands:
+
+-   Clone repository:
+
+    ``` bash
+    git clone <repo-url>
+    ```
+
+-   Create a branch:
+
+    ``` bash
+    git branch <branch-name>
+    ```
+
+-   Switch to a branch:
+
+    ``` bash
+    git checkout <branch-name>
+    ```
+
+-   Push a branch:
+
+    ``` bash
+    git push origin <branch-name>
+    ```
+
+-   Pull changes:
+
+    ``` bash
+    git pull origin main
+    ```
