@@ -4,158 +4,202 @@ format: html
 editor: visual
 ---
 
-Yes, for ongoing collaboration on a project, the best practice is to always work on **your own branches** locally, push to the corresponding **remote branch**, and create a **Pull Request (PR)** for merging. This approach ensures a clean workflow, reduces the risk of conflicts, and keeps the `main` branch stable. Here's a **standard workflow** for working on your project:
+This reminds us of the steps required every time we started working on our project.
 
----
+### **1. Start Work: Keep the `main` Branch Updated**
 
-### **1. Start Work: Stay Organized with Branches**
+#### Step 1: Switch to the `main` Branch
 
-#### Step 1: Update Your Local Repository
-Before you start working, always pull the latest changes from the `main` branch:
-```bash
+In RStudio: 1. Open the **Git** tab. 2. Ensure you are on the `main` branch by selecting it from the branch dropdown (visible in the Git tab toolbar).
+
+Alternatively, in the RStudio Terminal, run:
+
+``` bash
 git checkout main
-git pull origin main
 ```
 
-#### Step 2: Create a New Feature/Task Branch
-Create a new branch for your work to keep your changes isolated. Use a descriptive name for the branch:
-```bash
-git checkout -b feature/<branch-name>
-```
-For example:
-```bash
-git checkout -b feature/add-plot
-```
+#### Step 2: Pull the Latest Changes
 
----
+In the **Git** tab, click the **Pull** button to fetch and merge any updates from the remote `main` branch.
 
-### **2. Work on Your Changes Locally**
+------------------------------------------------------------------------
 
-#### Step 3: Make Changes to Files
-Edit your files, write code, and save your changes locally.
+### **2. Create a New Branch for Your Work**
 
-#### Step 4: Stage and Commit Changes
-Once you're ready to save your work:
-1. **Stage Changes**:
-   ```bash
-   git add <file-name>
-   ```
-   To stage all files:
-   ```bash
-   git add .
-   ```
-2. **Commit Changes**:
-   ```bash
-   git commit -m "Description of changes"
-   ```
-   For example:
-   ```bash
-   git commit -m "Added plot for data visualization"
-   ```
+#### Step 3: Create a New Branch
 
----
+1.  In the **Git** tab, click **New Branch**.
+2.  Name your branch descriptively based on your task (e.g., `feature/add-plot` or `fix/readme-typo`).
+3.  RStudio will automatically switch you to the new branch after creation.
 
-### **3. Push Your Work to the Remote Branch**
+Alternatively, in the RStudio Terminal, run:
 
-#### Step 5: Push the Feature Branch to GitHub
-Push your local branch to the remote repository:
-```bash
-git push origin feature/<branch-name>
-```
-The first time you push, Git will ask you to set the upstream branch. Confirm with:
-```bash
-git push --set-upstream origin feature/<branch-name>
+``` bash
+git checkout -b <branch-name>
 ```
 
----
+#### Step 4: Confirm the New Branch
 
-### **4. Open a Pull Request (PR)**
+Check that you are on the new branch in the **Git** tab (the branch name should appear in the toolbar). You can also verify with:
 
-#### Step 6: Create a Pull Request on GitHub
-1. Go to the repository on GitHub.
-2. You’ll see a notification about the new branch you pushed. Click **Compare & pull request**.
-3. Fill in the PR title and description:
-   - **Title**: Brief description (e.g., "Add data visualization for sales").
-   - **Description**: Explain what changes were made and why.
-4. Submit the pull request.
-
-#### Step 7: Wait for Review and Merge
-Your partner will review your changes, discuss if needed, and merge the PR into the `main` branch. You should avoid making new changes to this branch until the PR is merged.
-
----
-
-### **5. Sync with the Updated `main` Branch**
-
-#### Step 8: Pull Changes After PR is Merged
-Once your pull request is merged, go back to the `main` branch:
-```bash
-git checkout main
-git pull origin main
+``` bash
+git branch
 ```
 
-#### Step 9: Clean Up Old Branches (Optional)
-If your feature branch is no longer needed:
-1. Delete the local branch:
-   ```bash
-   git branch -d feature/<branch-name>
-   ```
-2. Delete the remote branch (if applicable):
-   ```bash
-   git push origin --delete feature/<branch-name>
-   ```
+------------------------------------------------------------------------
 
----
+### **3. Work Locally on Your Changes**
 
-### **Standard Steps for Ongoing Work**
-Here’s a summarized checklist for every time you work on the project:
+#### Step 5: Make Changes
 
-1. **Update Local `main`**:
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
+1.  Edit or create files in your RStudio project as needed.
+2.  Save your work.
 
-2. **Create a New Branch**:
-   ```bash
-   git checkout -b feature/<branch-name>
-   ```
+#### Step 6: Stage and Commit Changes
 
-3. **Work Locally**:
-   - Edit files.
-   - Stage and commit changes:
-     ```bash
-     git add .
-     git commit -m "Description of changes"
-     ```
+1.  In the **Git** tab, check the boxes next to the modified files under **Staged**.
+2.  Click **Commit**.
+3.  Add a **commit message** describing your changes (e.g., "Added visualization for sales data").
+4.  Click **Commit** to save your changes locally.
 
-4. **Push to Remote**:
-   ```bash
-   git push origin feature/<branch-name>
-   ```
+Alternatively, use the terminal:
 
-5. **Open a Pull Request**:
-   - On GitHub, create a PR to merge your feature branch into `main`.
+``` bash
+git add .
+git commit -m "Your descriptive message"
+```
 
-6. **Sync After Merging**:
-   - Pull the latest changes to your local `main` branch:
-     ```bash
-     git checkout main
-     git pull origin main
-     ```
+------------------------------------------------------------------------
 
-7. **Repeat for New Tasks**:
-   - Create a new branch for the next task.
+### **4. Push Your Branch to GitHub**
 
----
+#### Step 7: Push Your Branch
 
-### **Best Practices to Avoid Messing Up**
+1.  In the **Git** tab, click **Push**.
+2.  If this is the first time pushing the branch, RStudio may ask to track it with the remote. Confirm this.
 
-1. **Never Work Directly on `main`**: Always use branches for feature development or bug fixes.
-2. **Communicate with Your Partner**: Inform them about the branch you're working on.
-3. **Pull Changes Frequently**: Before creating a branch or pushing changes, always pull the latest `main`.
-4. **Resolve Conflicts Promptly**: If you encounter a conflict, resolve it locally before pushing.
-5. **Keep PRs Small**: Make PRs for specific features or fixes. Large PRs are harder to review and merge.
+Alternatively, use the terminal:
 
----
+``` bash
+git push -u origin <branch-name>
+```
 
-Let me know if you want further clarification or help with any step!
+The `-u` flag sets the branch to track its remote counterpart.
+
+------------------------------------------------------------------------
+
+### **5. Create a Pull Request (PR) on GitHub**
+
+#### Step 8: Open a PR
+
+1.  Go to your repository on GitHub.
+2.  You’ll see a notification about your new branch. Click **Compare & pull request**.
+3.  Fill in the PR details:
+    -   **Title**: A brief description of your task (e.g., "Add data visualization").
+    -   **Description**: Explain your changes and why they are important.
+4.  Submit the PR for review.
+
+------------------------------------------------------------------------
+
+### **6. Review and Merge**
+
+#### Step 9: Have Your Partner Review the PR
+
+-   Your partner reviews the changes in the PR on GitHub.
+-   They can leave comments, request changes, or approve the PR.
+
+#### Step 10: Merge the PR
+
+-   Once the PR is approved, it can be merged into the `main` branch on GitHub.
+
+------------------------------------------------------------------------
+
+### **7. Sync Your Local Repository**
+
+#### Step 11: Update Your Local `main`
+
+1.  In RStudio:
+
+    -   Switch back to the `main` branch using the branch dropdown in the **Git** tab.
+    -   Click **Pull** to fetch the latest changes.
+
+2.  Alternatively, in the terminal:
+
+    ``` bash
+    git checkout main
+    git pull origin main
+    ```
+
+#### Step 12: Delete Old Branches
+
+1.  Delete the **local branch**:
+    -   In the RStudio Terminal:
+
+        ``` bash
+        git branch -d <branch-name>
+        ```
+
+    -   If the branch hasn’t been fully merged, force-delete with:
+
+        ``` bash
+        git branch -D <branch-name>
+        ```
+2.  Delete the **remote branch**:
+    -   In the RStudio Terminal:
+
+        ``` bash
+        git push origin --delete <branch-name>
+        ```
+3.  Verify deletion
+
+``` bash
+git branch
+```
+
+The branch should no longer appear in the list.
+
+4.  Untrack a branch First, check tracking branches
+
+``` bash
+git branch -vv
+```
+
+If your branch still appears in the output, then
+
+``` bash
+git branch --unset-upstream Claire(branch name)
+```
+
+Then, verify again.
+
+``` bash
+git branch -vv
+```
+
+------------------------------------------------------------------------
+
+### **Best Practices for RStudio Workflow**
+
+1.  **Always Work on Feature Branches**:
+    -   Never work directly on the `main` branch.
+    -   Create a new branch for each feature, bug fix, or task.
+2.  **Commit Frequently**:
+    -   Commit small, meaningful changes often to keep a clean history.
+3.  **Pull Frequently**:
+    -   Always pull the latest changes from `main` before creating a new branch or pushing changes.
+4.  **Delete Merged Branches**:
+    -   Regularly delete merged branches locally and remotely to avoid clutter.
+5.  **Communicate with Your Team**:
+    -   Let your partner know when you’re working on a branch or waiting for a PR review.
+
+------------------------------------------------------------------------
+
+### Summary Workflow in RStudio
+
+1.  **Update**: Switch to `main` and pull the latest changes.
+2.  **Branch**: Create a new branch for your task.
+3.  **Work**: Make changes, stage, and commit them.
+4.  **Push**: Push your branch to GitHub.
+5.  **PR**: Create a pull request on GitHub and request a review.
+6.  **Merge**: Once approved, merge the PR and delete the branch.
+7.  **Sync**: Pull the latest changes into `main` locally and delete old branches.
