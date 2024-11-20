@@ -66,8 +66,46 @@ editor: visual
     -   Click the pull request, review the changes, and leave comments if necessary.
 3.  **Merge the Pull Request**:
     -   Once satisfied, click **Merge pull request**, then confirm by clicking **Confirm merge**.
-4.  **Delete the Branch (Optional)**:
-    -   After merging, GitHub will prompt you to delete the branch. Click **Delete branch** to keep the repository clean.
+4.  **Delete the Branch (By the first team member)**:
+    -   Steps:
+
+        1.  Delete local branch:
+
+        ``` bash
+        git branch -d Claire(branch name)
+        ```
+
+        2.  Delete remote branch
+
+        ``` bash
+        git push origin --delete Claire(branch name)
+        ```
+
+        3.  Verify deletion
+
+        ``` bash
+        git branch
+        ```
+
+        The branch should no longer appear in the list.
+
+        4.  Untrack a branch First, check tracking branches
+
+        ``` bash
+        git branch -vv
+        ```
+
+        If your branch still appears in the output, then
+
+        ``` bash
+        git branch --unset-upstream Claire(branch name)
+        ```
+
+        Then, verify again.
+
+        ``` bash
+        git branch -vv
+        ```
 
 ------------------------------------------------------------------------
 
